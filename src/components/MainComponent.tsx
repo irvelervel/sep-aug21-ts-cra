@@ -11,11 +11,13 @@ interface MainComponentProps {
 
 interface MainComponentState {
   alertVariant: string
+  user: { name: string } | null
 }
 
 class MainComponent extends Component<MainComponentProps, MainComponentState> {
   state: MainComponentState = {
     alertVariant: 'danger',
+    user: null,
   }
 
   //   changesName = (name:string) => name.toUpperCase()
@@ -42,6 +44,7 @@ class MainComponent extends Component<MainComponentProps, MainComponentState> {
           >
             CHANGE COLOR
           </Button>
+          {this.state.user ? <div>Welcome, {this.state.user.name}</div> : <div>You need to log in</div>}
         </Alert>
       </div>
     )
